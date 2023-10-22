@@ -9,7 +9,11 @@ function createBoard(){
         const squareCell = document.createElement('div');
         squareCell.classList.add('square');
         squareCell.id = index;
+
         squareCell.addEventListener('click' , () => addPlayerSymbol(squareCell, index));
+        squareCell.addEventListener('mouseover', () => squareCell.classList.add('hover'));
+        squareCell.addEventListener('mouseout', () => squareCell.classList.remove('hover'));
+
         gameBoard.append(squareCell);
     });
 }
@@ -20,7 +24,7 @@ function addPlayerSymbol(squareCell, index){
         cells[index] = currPlayer;
         squareCell.classList.add(currPlayer);
         squareCell.textContent = currPlayer;
-        currPlayer = (currPlayer === 'X') ? 'O' : 'X';
+        currPlayer = currPlayer === 'X' ? 'O' : 'X';
             
  }
 }
