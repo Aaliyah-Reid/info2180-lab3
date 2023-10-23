@@ -13,6 +13,8 @@ function createBoard(){
         squareCell.addEventListener('click' , () => addPlayerSymbol(squareCell, index));
         squareCell.addEventListener('mouseover', () => squareCell.classList.add('hover'));
         squareCell.addEventListener('mouseout', () => squareCell.classList.remove('hover'));
+        
+ 
 
         gameBoard.append(squareCell);
     });
@@ -50,6 +52,27 @@ function checkWinner(){
     }
 
 }
+
+  
+function resetGameBoard() {
+    cells.fill("");
+    const squareCells = document.querySelectorAll('.square');
+    squareCells.forEach((squareCell) =>{
+        squareCell.classList.remove('X','O');
+        squareCell.textContent = "";
+    });
+}
+
+const restartButton = document.querySelector('.btn');
+restartButton.addEventListener('click', function(event){
+    event.preventDefault();
+    currPlayer="X";
+    document.getElementById('status').textContent = `Move your mouse over a square and click to play an X or an O.`;
+    document.getElementById('status').classList.remove('you-won');
+    resetGameBoard();
+});
+
+
 
 createBoard();
 
